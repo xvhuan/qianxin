@@ -9,6 +9,7 @@ headers = {
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
     'Accept-Language': 'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7',
     'Cache-Control': 'no-cache',
+    'Content-Type': 'application/x-www-form-urlencoded',
     'Connection': 'keep-alive',
     'Pragma': 'no-cache',
     'Sec-Fetch-Dest': 'document',
@@ -30,5 +31,5 @@ response = session.request("GET", url, headers=headers)
 xx = etree.HTML(response.text)
 xxx = xx.xpath('/html/head/meta[@name="csrf-token"]/@content')[0]
 url = "https://forum.butian.net/sign"
-response = session.request("POST", url, headers=headers, data={'_token=': xxx})
+response = session.request("POST", url, headers=headers, data='_token='+xxx)
 print(response.text)
