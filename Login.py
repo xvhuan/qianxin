@@ -27,7 +27,7 @@ def get_pem():
     response = requests.request("GET", url, headers=headers)
     return response.json()["public_key"]
 
-yzm = eval(requests.get("http://api.illusory.cn/api/qianxin.php").text)
+yzm = eval(requests.get("https://api.illusory.cn/api/qianxin.php").text)
 with open("1.js","r",encoding="utf-8") as f:
     file_data = f.read()
 cxk = execjs.compile(file_data)
